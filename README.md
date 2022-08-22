@@ -7,8 +7,10 @@ Requirements
 ------------
 - Install Ubuntu via wsl : `wsl --install -d ubuntu`
 - Put a username and password
-- Install Ansible on the fresh WSL : `apt update && apt install ansible`
-- Run the playbook with sudo password ask : `ansible-playbook -i inventories/prod/ wsl.yml -K`
+- Install Ansible on the fresh WSL : `sudo apt update && sudo apt install ansible -y`
+- Copy the archive or get it directly from ansible-galaxy : `ansible-galaxy install belgotux.wsl`
+- Copy the example playbook
+- Run the playbook with sudo password ask : `ansible-playbook wsl.yml -K`
 
 Role Variables
 --------------
