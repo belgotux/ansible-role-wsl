@@ -1,0 +1,4 @@
+{% for private_key in id_rsa_files %}
+if [ -e {{private_key.dest}} ] ; then /usr/bin/keychain -q --nogui {{private_key.dest}} ; fi
+{% endfor %}
+source $HOME/.keychain/$(hostname)-sh

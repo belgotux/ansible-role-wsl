@@ -1,0 +1,13 @@
+- name: Upgrade the OS (apt-get dist-upgrade)
+  ansible.builtin.apt:
+    upgrade: dist
+    update_cache: yes
+- name: Update ansible + install sshpass for ansible asking password + keychain
+  apt:
+    pkg:
+      - ansible
+      - sshpass
+      - keychain
+      - openssh-client
+    state: latest
+    update_cache: yes

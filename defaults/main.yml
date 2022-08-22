@@ -1,0 +1,5 @@
+---
+# defaults file for wsl
+myuser: "{{ lookup('env','HOME') }}"
+id_rsa_files: [src_priv: "/mnt/c/Users/$myuser/.ssh/id_rsa", src_pub: "/mnt/c/Users/$myuser/.ssh/id_rsa", dest: "~/.ssh/id_rsa"]
+collections_to_install: ['community.docker']

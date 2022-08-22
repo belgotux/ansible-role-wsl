@@ -1,0 +1,23 @@
+galaxy_info:
+  role_name: wsl
+  author: belgotux
+  description: Role to add all the necessary to use wsl correctly
+  license: GPL-3.0-or-later
+
+  min_ansible_version: 2.1
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - focal
+    - jammy
+  #- name: Debian
+  #  versions:
+  #  - all
+  #  - bookworm
+  #  - bullseye
+
+  galaxy_tags:
+  - wsl
+
+dependencies: []

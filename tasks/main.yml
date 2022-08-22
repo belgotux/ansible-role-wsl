@@ -1,0 +1,14 @@
+---
+# tasks file for wsl
+- import_tasks: install.yml
+  become: true
+- include_tasks: ssh-key.yml
+  loop: "{{id_rsa_files}}"
+- import_tasks: configure-keychain.yml
+- import_tasks: sudo-nopasswd.yml
+  become: true
+- import_tasks: configure-git.yml
+- import_tasks: docker.yml
+  become: true
+- import_tasks: configure-ansible.yml
+  become: true 

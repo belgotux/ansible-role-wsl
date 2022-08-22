@@ -1,0 +1,6 @@
+- name: passwordless for sudo group
+  lineinfile:
+    line: "%sudo ALL=(ALL:ALL) NOPASSWD: ALL"
+    regexp: "^%sudo ALL="
+    path: "/etc/sudoers"
+    validate: "visudo -cf %s"

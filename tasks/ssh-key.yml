@@ -1,0 +1,44 @@
+- name: operations as user
+  become: true
+  become_user: "{{myuser}}"
+  block:
+  - name: check if dest ssh dir exist "{{item.dest|dirname}}"
+    stat: 
+      path: "{{item.dest|dirname}}"
+    register: ssh_dir
+  - debug: var="item.dest|dirname"
+  - debug: var=item.src_priv
+  - name: create ssh dir if not present
+    file:
+      path: "{{item.dest|dirname}}"
+      state: directory
+      # owner: "{{myuser}}"
+      # group: "{{myuser}}"
+      mode: '0700'
+    when: not ssh_dir.stat.exists
+  - name: check if windows ssh provate key present
+    stat: 
+      path: "{{item.src_priv}}"
+    register: id_rsa_windows_present
+  - name: copy windows ssh private key if present
+    copy:
+      remote_src: yes
+      src: "{{item.src_priv}}"
+      dest: "{{item.dest}}"
+      # owner: "{{myuser}}"
+      # group: "{{myuser}}"
+      mode: '0600'
+    when: id_rsa_windows_present.stat.exists
+  - name: check if windows ssh public key present
+    stat: 
+      path: "{{item.src_pub}}"
+    register: id_rsa_pub_windows_present
+  - name: copy windows ssh public key if present
+    copy:
+      remote_src: yes
+      src: "{{item.src_pub}}"
+      dest: "{{item.dest}}.pub"
+      # owner: "{{myuser}}"
+      # group: "{{myuser}}"
+      mode: '0600'
+    when: id_rsa_pub_windows_present.stat.exists

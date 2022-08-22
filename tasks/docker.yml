@@ -1,0 +1,16 @@
+- name: check if Windows docker is installed
+  stat:
+    path: /mnt/wsl/docker-desktop/cli-tools/usr/bin/docker
+  register: wsl_docker_installed
+#- debug: var=wsl_docker_installed
+
+- name: docker-compose
+  include_role:
+    name: docker
+    tasks_from: install-docker-compose
+  when: wsl_docker_installed.stat.exists
+- name: docker alias
+  include_role:
+    name: docker
+    tasks_from: alias-docker-compose
+  when: wsl_docker_installed.stat.exists

@@ -1,0 +1,11 @@
+# - name: Configure Git global variables
+#   community.general.git_config:
+#     name: "{{item.param}}"
+#     scope: global
+#     value: "{{item.value}}"
+#   loop: git_global
+#   when: git_params is defined
+- name: Configure Git global variables
+  template:
+    src: gitconfig.j2
+    dest: ~/.gitconfig

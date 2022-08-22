@@ -1,0 +1,18 @@
+- name: check if aliases dir exist (if you don't use role 'basic')
+  stat: 
+    path: "~/.bash_aliases.d"
+  register: bash_alias_dir_present
+  #when: bash_alias_dir is defined
+- name: create dir to install keychain.aliases in ~ (used by role 'basic')
+  file:
+    dest: "~/.bash_aliases.d"
+    mode: '0755'
+    state: directory
+  when: not bash_alias_dir_present.stat.exists
+  #when: bash_alias_dir is defined and not bash_alias_dir_present.stat.exists
+- name: Install keychain at login file in ~
+  template:
+    src: keychain.aliases.j2
+    dest: "~/.bash_aliases.d/keychain.aliases"
+    mode: '0644'
+  #when: bash_alias_dir is defined and bash_alias_dir_present.stat.exists

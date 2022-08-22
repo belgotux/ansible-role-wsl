@@ -1,0 +1,6 @@
+- name : Install Ansible module
+  shell : ansible-galaxy collection install {{item}}
+  register: return_install_community_docker
+  failed_when: return_install_community_docker.rc != 0
+  changed_when: '"it is already installed" not in return_install_community_docker.stdout'
+  loop: "{{collections_to_install}}"
