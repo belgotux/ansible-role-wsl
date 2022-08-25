@@ -1,0 +1,6 @@
+# Need to be at the end, dificult tu use Ansible to update itself
+# https://launchpad.net/~ansible/+archive/ubuntu/ansible
+- name: Add PPA ansible
+  apt_repository:
+    repo: 'ppa:ansible/ansible'
+    state: present
