@@ -1,2 +1,5 @@
 ---
 # vars file for wsl
+# links_list:
+# - src: source_dir
+#   dest: destination_dir

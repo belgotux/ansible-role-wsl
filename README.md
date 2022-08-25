@@ -19,6 +19,9 @@ Role Variables
 - `id_rsa_files` : list of ssh keys in the format : `[src_priv: "/mnt/c/Users/$myuser/.ssh/id_rsa", src_pub: "/mnt/c/Users/$myuser/.ssh/id_rsa", dest: "~/.ssh/id_rsa"]`
 - `collections_to_install` : list of the ansible collections to install (default `community.docker`)
 
+### Optionnel :
+- `links_list` : list of src en dest link to create, for link your personnel script to files folder in ansible for example, format list of src and dest.
+
 ### Automatic : 
 - `myuser`: the user defined at installation (default `"{{ lookup('env','HOME') }}"`)
 

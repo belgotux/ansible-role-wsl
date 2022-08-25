@@ -4,3 +4,10 @@
   failed_when: return_install_community_docker.rc != 0
   changed_when: '"it is already installed" not in return_install_community_docker.stdout'
   loop: "{{collections_to_install}}"
+- name: link files dependancies for ansible's projects
+  ansible.builtin.file:
+    src: "{{item.src}}"
+    dest: "{{item.dest}}"
+    state: link
+  loop: "{{links_list}}"
+  when: links_list is defined
