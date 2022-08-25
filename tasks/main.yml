@@ -11,4 +11,3 @@
 - import_tasks: docker.yml
   become: true
 - import_tasks: configure-ansible.yml
-  become: true 
