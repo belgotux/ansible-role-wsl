@@ -1,0 +1,4 @@
+nameserver {{dns_server}}
+{% if dns_search_suffix is defined %}
+search {{dns_search_suffix}}
+{% endif %}

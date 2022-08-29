@@ -2,7 +2,7 @@
   shell : ansible-galaxy collection install {{item}}
   register: return_install_community_docker
   failed_when: return_install_community_docker.rc != 0
-  changed_when: '"it is already installed" not in return_install_community_docker.stdout'
+  changed_when: '"it is already installed" not in return_install_community_docker.stdout and "All requested collections are already installed" not in return_install_community_docker.stdout'
   loop: "{{collections_to_install}}"
 - name: link files dependancies for ansible's projects
   ansible.builtin.file:

@@ -1,5 +1,7 @@
 ---
 # tasks file for wsl
+- import_tasks: configure-network.yml
+  become: true
 - import_tasks: install.yml
   become: true
 - include_tasks: ssh-key.yml

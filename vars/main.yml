@@ -3,3 +3,12 @@
 # links_list:
 # - src: source_dir
 #   dest: destination_dir
+
+# to set manual DNS server and not take the automatic dns 172.21.32.1
+# dns_server: x.x.x.x
+
+# set hostname
+# my_hostname: hostname
+
+# set search DNS suffix
+# dns_search_suffix: me.local

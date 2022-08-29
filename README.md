@@ -21,6 +21,9 @@ Role Variables
 
 ### Optionnel :
 - `links_list` : list of src en dest link to create, for link your personnel script to files folder in ansible for example, format list of src and dest.
+- `dns_server` : to set manual DNS server and not take the automatic dns 172.21.32.1
+- `my_hostname` : to set a hostname for the distribution
+- `dns_search_suffix` : set search DNS suffix
 
 ### Automatic : 
 - `myuser`: the user defined at installation (default `"{{ lookup('env','HOME') }}"`)

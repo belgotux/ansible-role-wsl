@@ -1,0 +1,21 @@
+# normally 172.21.32.1
+- name: get actual DNS
+  shell: egrep '^nameserver' /etc/resolv.conf | sed -e 's/nameserver \([^"]*\)/\1/g'
+  register: actual_dns_server
+  changed_when: false
+
+- name: use automatic DNS server "{{actual_dns_server.stdout}}" if not set manually
+  set_fact:
+    dns_server: "{{actual_dns_server.stdout}}"
+  when: dns_server is not defined
+  changed_when: false
+
+- name: generate wsl.conf
+  template:
+    src: wsl.conf.j2
+    dest: /etc/wsl.conf
+
+- name: configure resolv.conf
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
