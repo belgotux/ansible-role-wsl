@@ -2,6 +2,9 @@
   ansible.builtin.apt:
     upgrade: dist
     update_cache: yes
+- name: pause
+  pause:
+    seconds: 15
 - name: Update ansible + install sshpass for ansible asking password + keychain
   apt:
     pkg:
