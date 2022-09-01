@@ -1,6 +1,6 @@
 # normally 172.21.32.1
 - name: get actual DNS
-  shell: route -n | egrep '^0.0.0.0' | awk '{print $2}'
+  shell: ip route | egrep '^default' | awk '{print $3}'
   register: actual_dns_server
   changed_when: false
 
