@@ -15,7 +15,8 @@
     src: wsl.conf.j2
     dest: /etc/wsl.conf
 
-- name: configure resolv.conf
-  template:
-    src: resolv.conf.j2
-    dest: /etc/resolv.conf
+# Need to reapply ansible at each boot, not possible to create a systemd service or something...
+# - name: configure resolv.conf
+#   template:
+#     src: resolv.conf.j2
+#     dest: /etc/resolv.conf

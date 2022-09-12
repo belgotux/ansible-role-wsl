@@ -12,33 +12,21 @@
     file:
       path: "{{item.dest|dirname}}"
       state: directory
-      # owner: "{{myuser}}"
-      # group: "{{myuser}}"
       mode: '0700'
     when: not ssh_dir.stat.exists
-  - name: check if windows ssh provate key present
-    stat: 
-      path: "{{item.src_priv}}"
-    register: id_rsa_windows_present
-  - name: copy windows ssh private key if present
+  - name: copy windows ssh private key
     copy:
       remote_src: yes
       src: "{{item.src_priv}}"
       dest: "{{item.dest}}"
-      # owner: "{{myuser}}"
-      # group: "{{myuser}}"
       mode: '0600'
-    when: id_rsa_windows_present.stat.exists
   - name: check if windows ssh public key present
     stat: 
       path: "{{item.src_pub}}"
     register: id_rsa_pub_windows_present
-  - name: copy windows ssh public key if present
+  - name: copy windows ssh public key
     copy:
       remote_src: yes
       src: "{{item.src_pub}}"
       dest: "{{item.dest}}.pub"
-      # owner: "{{myuser}}"
-      # group: "{{myuser}}"
       mode: '0600'
-    when: id_rsa_pub_windows_present.stat.exists
