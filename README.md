@@ -35,7 +35,6 @@ Example Playbook
 - hosts: localhost
   vars:
     myuser: belgotux
-    firstuserpasswd: $6$.xxx
     git_global: 
     - param1: user
       param2: name
