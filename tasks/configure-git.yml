@@ -9,3 +9,19 @@
   template:
     src: gitconfig.j2
     dest: ~/.gitconfig
+
+- name: check if aliases dir exist (if you don't use role 'basic')
+  stat: 
+    path: "~/.bash_aliases.d"
+  register: bash_alias_dir_present
+- name: create dir to install gpg_tty.aliases in ~ (used by role 'basic')
+  file:
+    dest: "~/.bash_aliases.d"
+    mode: '0755'
+    state: directory
+  when: not bash_alias_dir_present.stat.exists
+- name: Configure GPG prompt for passphrase
+  copy:
+    content: export GPG_TTY=$(tty)
+    dest: "~/.bash_aliases.d/gpg_tty.aliases"
+    mode: '0644'
