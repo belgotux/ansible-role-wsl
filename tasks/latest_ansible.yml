@@ -4,3 +4,4 @@
   apt_repository:
     repo: 'ppa:ansible/ansible'
     state: present
+  when: ansible_facts['distribution'] == "Ubuntu"
