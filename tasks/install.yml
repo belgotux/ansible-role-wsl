@@ -1,7 +1,13 @@
+- name: Upgrade the OS
+  ansible.builtin.apt:
+    upgrade: true
+    update_cache: true
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version >= "22"
 - name: Upgrade the OS (apt-get dist-upgrade)
   ansible.builtin.apt:
     upgrade: dist
-    update_cache: yes
+    update_cache: true
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "20"
 - name: pause
   pause:
     seconds: 15
@@ -13,4 +19,4 @@
       - keychain
       - openssh-client
     state: latest
-    update_cache: yes
+    update_cache: true

@@ -26,7 +26,7 @@ Role Variables
 - `dns_search_suffix` : set search DNS suffix
 
 ### Automatic : 
-- `myuser`: the user defined at installation (default `"{{ lookup('env','HOME') }}"`)
+- `myuser`: the user defined at installation (default `"{{ ansible_env.HOME }}"`)
 
 Example Playbook
 ----------------

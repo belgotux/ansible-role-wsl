@@ -16,7 +16,7 @@
     when: not ssh_dir.stat.exists
   - name: copy windows ssh private key
     copy:
-      remote_src: yes
+      remote_src: true
       src: "{{item.src_priv}}"
       dest: "{{item.dest}}"
       mode: '0600'
@@ -26,7 +26,7 @@
     register: id_rsa_pub_windows_present
   - name: copy windows ssh public key
     copy:
-      remote_src: yes
+      remote_src: true
       src: "{{item.src_pub}}"
       dest: "{{item.dest}}.pub"
       mode: '0600'
