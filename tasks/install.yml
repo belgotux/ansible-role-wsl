@@ -20,3 +20,10 @@
       - openssh-client
     state: latest
     update_cache: true
+
+- name: fix iptables to use services on WSL
+  shell:
+    cmd: |
+      update-alternatives --set iptables /usr/sbin/iptables-legacy
+      update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version >= "24"
